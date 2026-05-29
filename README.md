@@ -9,6 +9,7 @@ The system validates usernames, passwords, and South African cell phone numbers 
 The project includes structured classes and methods, input validation, and unit testing to ensure functionality and reliability.
 
 ## Features
+## Part 1
 - Console-based user interaction (no GUI)
 - User registration and login system
 - Username validation (must contain "_" and be ≤ 5 characters)
@@ -19,16 +20,16 @@ The project includes structured classes and methods, input validation, and unit 
 - Structured code using classes and methods
 - JUnit testing for all major functions
 
-## Part 2 – Chat Messaging System
-Chat menu system
-Send messages
-Display sent messages
-Message ID generation
-Message hash generation
-Recipient phone number validation
-Message length validation (maximum 250 characters)
-Message storage using arrays
-Console menu navigation
+## Part 2 
+- Chat menu system
+- Send messages
+- Display sent messages
+- Message ID generation
+- Message hash generation
+- Recipient phone number validation
+- Message length validation (maximum 250 characters)
+- Message storage using arrays
+- Console menu navigation
 
 ## How to Run
 1. Open the project in NetBeans.
@@ -63,23 +64,23 @@ Hello, welcome to ChatApp
 ## Unit Testing
 JUnit tests are implemented to validate:
 ## Login System
-Username formatting
-Password complexity
-Cell phone number validation
-Registration functionality
-Login success and failure
+- Username formatting
+- Password complexity
+- Cell phone number validation
+- Registration functionality
+- Login success and failure
 ## Messaging System
-Recipient number validation
-Message length validation
-Message ID generation
-Message hash generation
+- Recipient number validation
+- Message length validation
+- Message ID generation
+- Message hash generation
 
 ## Future Improvements
-Store multiple users
-Save messages to files or databases
-Add received messages functionality
-Add search functionality
-Extend into a complete chat platform
+- Store multiple users
+- Save messages to files or databases
+- Add received messages functionality
+- Add search functionality
+- Extend into a complete chat platform
 
   ## References
 ## Part 1
