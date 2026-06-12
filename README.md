@@ -30,6 +30,52 @@ The project demonstrates the use of Java classes, methods, arrays, validation te
 - Message storage using arrays
 - Console menu navigation
 
+## Part 3 
+Part 3 extends the messaging functionality by introducing message management features and message storage.
+The application stores messages in separate arrays:
+- Sent Messages Array
+- Stored Messages Array
+- Disregarded Messages Array
+- Message Hash Array
+- Message ID Array
+- Stored Messages Menu
+- Users can:
+Display Stored Messages
+- Shows:
+Sender
+Recipient
+- Display Longest Message
+Returns the stored message with the greatest number of characters.
+- Search by Message ID
+Displays:
+Recipient
+Message Content
+Search by Recipient
+- Displays all messages sent to a specified recipient.
+- Delete Messages
+Messages can be deleted using the Message Hash.
+- Generate Message Report
+Displays:
+Message Hash
+Recipient
+Message Content
+JSON Storage
+- Messages are stored as a JSON file for persistence and retrieval.
+
+## Project Structure
+src/
+└── loginapp/
+    ├── Main.java
+    ├── Login.java
+    ├── Message.java
+    └── MessageManager.java
+
+test/
+└── loginapp/
+    ├── LoginTest.java
+    ├── MessageTest.java
+    └── MessageManagerTest.java
+
 ## How to Run
 1. Open the project in NetBeans.
 2. Build the project.
