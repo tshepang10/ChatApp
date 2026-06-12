@@ -1,12 +1,11 @@
 # ChatApp
-A console-based Java application that implements user registration and login with validation for username, password, and South African cell phone numbers, including JUnit tests.
+A console-based Java chat application developed using Object-Oriented Programming (OOP) principles. The application provides user registration, login, messaging functionality, message management, JSON message storage, and automated unit testing using JUnit.
 ## Project Overview
+ChatApp is a Java console application developed in multiple phases. The project began with a secure user registration and login system and was later extended into a complete messaging platform.
 
-This is a Java console-based chat application developed using Object-Oriented Programming (OOP) principles. The application was developed in phases, beginning with user registration and login functionality and later extending into a messaging system.
+The application validates usernames, passwords, and South African cell phone numbers before allowing access. After successful login, users can send messages, view sent messages, manage stored messages, generate message hashes and IDs, and perform message searches.
 
-The system validates usernames, passwords, and South African cell phone numbers before allowing access. Once users successfully log in, they can interact with a menu-driven messaging system through the console.
-
-The project includes structured classes and methods, input validation, and unit testing to ensure functionality and reliability.
+The project demonstrates the use of Java classes, methods, arrays, validation techniques, file handling, JSON storage, and automated testing.
 
 ## Features
 ## Part 1
@@ -37,25 +36,21 @@ The project includes structured classes and methods, input validation, and unit 
 3. Run the Main.java file.
 4. Register a user account.
 5. Log in using registered details.
-6. Access the chat menu.
+6. Access the Chat Menu.
 7. Send and view messages.
 
 ## Example Inputs
-Username:
-kyl_1
-
-Password:
-#Ch4rles
-
-Cell Phone:
-+27821990897
-
-Message Recipient:
-+27831234567
-
-Message:
-Hello, welcome to ChatApp
-
+## Registration
+First Name: Tshepang
+Username: t_m
+Password: #Chat123
+Phone Number: +27821234567
+## Login
+Username: t_m
+Password: #Chat123
+## Message
+Recipient: +27831234567
+Message: Hello, welcome to ChatApp
 ## Chat Menu
 1. Send Messages
 2. Show Sent Messages
@@ -74,13 +69,37 @@ JUnit tests are implemented to validate:
 - Message length validation
 - Message ID generation
 - Message hash generation
+## Message Manager Tests
+- Sent message storage
+- Longest message retrieval
+- Search by Message ID
+- Search by Recipient
+- Delete message by Message Hash
+- Message report generation
+Automated Unit Testing
 
-## Future Improvements
-- Store multiple users
-- Save messages to files or databases
-- Add received messages functionality
-- Add search functionality
-- Extend into a complete chat platform
+Automated testing is implemented using JUnit.
+
+The tests execute automatically when:
+
+Test File is selected in NetBeans
+Test Project is selected in NetBeans
+GitHub Actions workflow is executed
+
+## Automated tests ensure:
+Consistent functionality
+Reduced manual testing effort
+Early bug detection
+Reliable code deployment
+
+## Technologies Used
+Java
+NetBeans IDE
+JUnit 4
+JSON
+Object-Oriented Programming (OOP)
+GitHub
+GitHub Actions
 
   ## References
 ## Part 1
@@ -113,3 +132,12 @@ Regexr, 2024. Regular Expression Tester. [online] Available at: https://regexr.c
 
 NetBeans, 2024. Apache NetBeans Documentation. [online] Available at: https://netbeans.apache.org/kb/ [Accessed 24 May 2026].
 
+## Part 3
+
+JSON.org, 2024. Introducing JSON. Available at: https://www.json.org/
+
+Oracle, 2023. Java File Handling Documentation. Available at: https://docs.oracle.com/javase/tutorial/essential/io/
+
+GitHub, 2024. GitHub Actions Documentation. Available at: https://docs.github.com/actions
+
+JUnit, 2024. JUnit 4 User Guide. Available at: https://junit.org/junit4/
