@@ -16,24 +16,25 @@ public class Message {
         this.messageID = generateMessageID();
     }
 
-    // Generate message ID
+    // Generate Message ID
     public final String generateMessageID() {
 
         int random = (int)(Math.random() * 900000000) + 100000000;
+
         return String.valueOf(random);
     }
 
-    // Check recipient format
+    // Validate recipient number
     public boolean checkRecipientCell() {
         return recipient.matches("^\\+27\\d{9}$");
     }
 
-    // Check message length
+    // Validate message length
     public boolean checkMessageLength() {
         return messageText.length() <= 250;
     }
 
-    // Create message hash
+    // Create Message Hash
     public String createMessageHash() {
 
         String[] words = messageText.split(" ");
@@ -41,19 +42,17 @@ public class Message {
         String firstWord = words[0].toUpperCase();
         String lastWord = words[words.length - 1].toUpperCase();
 
-        return messageNumber + ":" 
-                + messageID.substring(0,2)
-                + ":" 
-                + firstWord 
+        return messageNumber + ":"
+                + messageID.substring(0, 2)
+                + ":"
+                + firstWord
                 + lastWord;
     }
 
-    // Display message details
     public String printMessage() {
 
-        return """
-               -----------------------------------
-               Message ID: """ + messageID
+        return "\n-----------------------------------"
+                + "\nMessage ID: " + messageID
                 + "\nMessage Hash: " + createMessageHash()
                 + "\nRecipient: " + recipient
                 + "\nMessage: " + messageText
@@ -66,5 +65,13 @@ public class Message {
 
     public String getMessageText() {
         return messageText;
+    }
+
+    public String getMessageID() {
+        return messageID;
+    }
+
+    public String getMessageHash() {
+        return createMessageHash();
     }
 }

@@ -13,11 +13,7 @@ public class Main {
         System.out.println("        WELCOME TO CHATAPP");
         System.out.println("=================================");
 
-        // =========================
         // REGISTRATION
-        // =========================
-
-        System.out.println("\n=== REGISTRATION ===");
 
         System.out.print("Enter first name: ");
         String firstName = input.nextLine();
@@ -30,11 +26,10 @@ public class Main {
             username = input.nextLine();
 
             if (login.checkUsername(username)) {
-                System.out.println("Username successfully captured.");
                 break;
-            } else {
-                System.out.println("Username incorrectly formatted.");
             }
+
+            System.out.println("Username incorrectly formatted.");
         }
 
         String password;
@@ -45,26 +40,24 @@ public class Main {
             password = input.nextLine();
 
             if (login.checkPasswordComplexity(password)) {
-                System.out.println("Password successfully captured.");
                 break;
-            } else {
-                System.out.println("Password incorrectly formatted.");
             }
+
+            System.out.println("Password incorrectly formatted.");
         }
 
-        String cell;
+        String phone;
 
         while (true) {
 
-            System.out.print("Enter SA phone number (+27...): ");
-            cell = input.nextLine();
+            System.out.print("Enter SA phone number: ");
+            phone = input.nextLine();
 
-            if (login.checkCellPhoneNumber(cell)) {
-                System.out.println("Cell phone number successfully added.");
+            if (login.checkCellPhoneNumber(phone)) {
                 break;
-            } else {
-                System.out.println("Cell number incorrectly formatted.");
             }
+
+            System.out.println("Phone number incorrectly formatted.");
         }
 
         System.out.println(
@@ -72,45 +65,48 @@ public class Main {
                         firstName,
                         username,
                         password,
-                        cell));
+                        phone));
 
-        // =========================
         // LOGIN
-        // =========================
 
-        boolean success = false;
+        boolean loggedIn = false;
 
-        System.out.println("\n=== LOGIN ===");
+        while (!loggedIn) {
 
-        while (!success) {
-
-            System.out.print("Enter username: ");
+            System.out.print("Username: ");
             String loginUser = input.nextLine();
 
-            System.out.print("Enter password: ");
+            System.out.print("Password: ");
             String loginPass = input.nextLine();
 
-            success = login.login(loginUser, loginPass);
+            loggedIn =
+                    login.login(
+                            loginUser,
+                            loginPass);
 
             System.out.println(
-                    login.returnLoginStatus(success));
+                    login.returnLoginStatus(loggedIn));
         }
 
-        // =========================
-        // CHAT MENU
-        // =========================
+        // PART 3 ARRAYS
 
-        Message[] messages = new Message[100];
-        int messageCount = 0;
+        Message[] sentMessages = new Message[100];
+        Message[] storedMessages = new Message[100];
+        Message[] disregardedMessages = new Message[100];
+
+        int sentCount = 0;
+        int storedCount = 0;
+        int disregardCount = 0;
 
         int option;
 
         do {
 
             System.out.println("\n========== CHAT MENU ==========");
-            System.out.println("1. Send Messages");
+            System.out.println("1. Send Message");
             System.out.println("2. Show Sent Messages");
             System.out.println("3. Quit");
+            System.out.println("4. Stored Messages");
 
             System.out.print("Choose option: ");
             option = input.nextInt();
@@ -120,43 +116,45 @@ public class Main {
 
                 case 1:
 
-                    System.out.print(
-                            "Enter recipient number: ");
+                    System.out.print("Recipient: ");
+                    String recipient = input.nextLine();
 
-                    String recipient =
-                            input.nextLine();
-
-                    System.out.print(
-                            "Enter message: ");
-
-                    String text =
-                            input.nextLine();
+                    System.out.print("Message: ");
+                    String text = input.nextLine();
 
                     Message message =
                             new Message(
                                     recipient,
                                     text,
-                                    messageCount + 1);
+                                    sentCount + 1);
 
-                    if (message.checkRecipientCell()
-                            && message.checkMessageLength()) {
-
-                        messages[messageCount] =
-                                message;
-
-                        messageCount++;
+                    if (!message.checkRecipientCell()) {
 
                         System.out.println(
-                                "Message sent successfully.");
+                                "Invalid recipient number.");
 
-                        System.out.println(
-                                message.printMessage());
-
-                    } else {
-
-                        System.out.println(
-                                "Invalid message details.");
+                        break;
                     }
+
+                    if (!message.checkMessageLength()) {
+
+                        System.out.println(
+                                "Message exceeds 250 characters.");
+
+                        break;
+                    }
+
+                    sentMessages[sentCount] = message;
+                    storedMessages[storedCount] = message;
+
+                    sentCount++;
+                    storedCount++;
+
+                    System.out.println(
+                            "Message sent successfully.");
+
+                    System.out.println(
+                            message.printMessage());
 
                     break;
 
@@ -165,18 +163,16 @@ public class Main {
                     System.out.println(
                             "\n===== SENT MESSAGES =====");
 
-                    if (messageCount == 0) {
+                    if (sentCount == 0) {
 
                         System.out.println(
-                                "No messages available.");
+                                "No sent messages.");
                     }
 
-                    for (int i = 0;
-                            i < messageCount;
-                            i++) {
+                    for (int i = 0; i < sentCount; i++) {
 
                         System.out.println(
-                                messages[i]
+                                sentMessages[i]
                                         .printMessage());
                     }
 
@@ -189,6 +185,92 @@ public class Main {
 
                     break;
 
+                case 4:
+
+                    System.out.println(
+                            "\n===== STORED MESSAGES =====");
+
+                    if (storedCount == 0) {
+
+                        System.out.println(
+                                "No stored messages.");
+
+                        break;
+                    }
+
+                    // Display Sender and Recipient
+
+                    for (int i = 0; i < storedCount; i++) {
+
+                        System.out.println(
+                                "Sender: "
+                                + firstName);
+
+                        System.out.println(
+                                "Recipient: "
+                                + storedMessages[i]
+                                        .getRecipient());
+
+                        System.out.println();
+                    }
+
+                    // Longest Message
+
+                    Message longest =
+                            storedMessages[0];
+
+                    for (int i = 1;
+                            i < storedCount;
+                            i++) {
+
+                        if (storedMessages[i]
+                                .getMessageText()
+                                .length()
+                                >
+                                longest
+                                .getMessageText()
+                                .length()) {
+
+                            longest =
+                                    storedMessages[i];
+                        }
+                    }
+
+                    System.out.println(
+                            "Longest Message:");
+
+                    System.out.println(
+                            longest.getMessageText());
+
+                    // Report
+
+                    System.out.println(
+                            "\n===== REPORT =====");
+
+                    for (int i = 0;
+                            i < storedCount;
+                            i++) {
+
+                        System.out.println(
+                                "Hash: "
+                                + storedMessages[i]
+                                        .getMessageHash());
+
+                        System.out.println(
+                                "Recipient: "
+                                + storedMessages[i]
+                                        .getRecipient());
+
+                        System.out.println(
+                                "Message: "
+                                + storedMessages[i]
+                                        .getMessageText());
+
+                        System.out.println();
+                    }
+
+                    break;
+
                 default:
 
                     System.out.println(
@@ -196,6 +278,5 @@ public class Main {
             }
 
         } while (option != 3);
-
     }
 }
